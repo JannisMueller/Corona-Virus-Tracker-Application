@@ -2,16 +2,46 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
+
 <head>
     <title>Coronavirus Death Toll Tracker Applicaton </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 
 <body>
 
-<p th:text=$"{testName}"></p>
+<div class="container" >
 
+<h1>Coronavirus Death Toll Tracker Applicaton </h1>
+<p>This Application list the current number of death reported across the world</p>
+
+<div class="jumbotron">
+
+    <h1 class="display-4" th:text="${totalReportedDeath}"></h1>
+    <p  class="lead">Total death reported as today</p>
+
+    <h2 class="display-4" th:text="${totalReportedCases}"></h2>
+    <p class="lead">Total cases reported as today</p>
+
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>State</th>
+        <th>Country</th>
+        <th>Total death reported<th>
+        <th>Total cases reported</th>
+    </tr>
+    <tr th:each= "locationStat : ${locationStats}">
+        <td th:text="${locationStat.state}"></td>
+        <td th:text="${locationStat.country}"></td>
+        <td th:text="${locationStat.latestTotalDeath}">0<td>
+        <td th:text="${locationStat.latestConfirmedCases}">0</td>
+    </tr>
+</table>
+</div>
 </body>
-
 </html>
